@@ -2,7 +2,7 @@ var isGameGoing = false;
 var currentSequence = [];
 var userSequence = [];
 var level = 1;
-var trial = 1;
+var trial = 0;
 
 $(document).keypress(startGame);
 $(document).on("touchend", startGame);
@@ -109,3 +109,4 @@ function gameOver() {
   isGameGoing = false;
   trial++;
 }
+
