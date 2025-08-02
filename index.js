@@ -99,6 +99,7 @@ function gameOver() {
     var screamAudio = new Audio("sounds/scream.mp3");
     screamAudio.volume = screamVolume;
     screamAudio.play();
+    trial = 0;
 
     setTimeout(function () {
       $(".screamer").addClass("invisible");
@@ -117,6 +118,7 @@ function gameOver() {
   isGameGoing = false;
   trial++;
 }
+
 
 
 
