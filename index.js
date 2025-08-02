@@ -1,8 +1,12 @@
+const soundVolume = 0.1;
+const screamVolume = 1;
+
 var isGameGoing = false;
 var currentSequence = [];
 var userSequence = [];
 var level = 1;
 var trial = 0;
+
 
 $(document).keypress(startGame);
 $(document).on("touchend", startGame);
@@ -80,7 +84,7 @@ function generateNewTile() {
 
 function animateButton(buttonColor, timeOut) {
   var btnSound = new Audio("sounds/" + buttonColor + ".mp3");
-  btnSound.volume = 0.1;
+  btnSound.volume = soundVolume;
   btnSound.play();
 
   $("#" + buttonColor).addClass("pressed");
@@ -92,7 +96,8 @@ function animateButton(buttonColor, timeOut) {
 function gameOver() {
   if (trial === 3) {
     $(".screamer").removeClass("invisible");
-    new Audio("sounds/scream.mp3").play();
+    var screamAudio = new Audio("sounds/scream.mp3");
+    screamAudio.volume = screamVolume;
 
     setTimeout(function () {
       $(".screamer").addClass("invisible");
@@ -102,11 +107,14 @@ function gameOver() {
   $("body").addClass("game-over");
   $("h1").text("Game Over!");
 
-  new Audio("sounds/wrong.mp3").play();
+  var wrongAudio = new Audio("sounds/wrong.mp3");
+  wrongAudio.volume = soundVolume;
+  wrongAudio.play();
 
   currentSequence = [];
   userSequence = [];
   isGameGoing = false;
   trial++;
 }
+
 
